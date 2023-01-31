@@ -15,7 +15,7 @@
     </div> <br>
     <input type="text" name="" id="msg"><br>
     <input type="text" name="" id="username"><br>
-    <button>Enviar</button>
+    <button onclick="enviar()">Enviar</button>
 </body>
 <script src="https://cdn.socket.io/4.5.4/socket.io.min.js"
     integrity="sha384-/KNQL8Nu5gCHLqwqfQjA689Hhoqgi2S84SNUxC3roTe4EhJ9AfLkp8QiQcU8AMzI"
@@ -26,6 +26,16 @@
     socket.on("disconnet", () => {
         connsole.log("disconnect sucessfully")
     })
+
+    const send = () => {
+        const msgField = document.getElementById("msg")
+        const usernameField = document.getElementById("username")
+
+        const msg = msgField.value
+        const username = usernameField.value
+
+        socket.emit("msg", { msg, username })
+    }
 </script>
 
 </html>
