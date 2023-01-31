@@ -10,7 +10,7 @@ io.on("connection", (stream) => {
     })
 
     stream.on("msg", (data) => {
-        stream.emit("showmsg", data)
+        io.emit("showmsg", data)
         console.log(data)
     })
 })
