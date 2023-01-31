@@ -8,16 +8,6 @@ io.on("connection", (stream) => {
     stream.on("disconnect", () => {
         console.log("X disconnected: ", stream.id)
     })
-
-
-    stream.on("begin", (data) => {
-        console.log(data)
-    })
-
-    stream.on("value input", (data) => {
-        console.log(data)
-        stream.emit("result", data)
-    })
 })
 
 app.set("view engine", "ejs")
