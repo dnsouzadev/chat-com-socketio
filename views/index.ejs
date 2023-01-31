@@ -10,7 +10,7 @@
 
 <body>
     <h1>CHAT WITH WEBSOCKET.IO</h1>
-    <div class="chat">
+    <div class="chat" id="chat">
 
     </div> <br>
     <input type="text" name="" id="msg"><br>
@@ -25,6 +25,14 @@
 
     socket.on("disconnet", () => {
         connsole.log("disconnect sucessfully")
+    })
+
+    socket.on("showmsg", (data) => {
+        console.log(data)
+        const chat = document.getElementById("chat")
+        const p = document.createElement("p")
+        p.innerHTML = data.username + ": " + data.msg
+        chat.append(p)
     })
 
     const send = () => {
