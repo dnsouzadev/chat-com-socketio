@@ -8,6 +8,11 @@ io.on("connection", (stream) => {
     stream.on("disconnect", () => {
         console.log("X disconnected: ", stream.id)
     })
+
+    stream.on("msg", (data) => {
+        stream.emit("showmsg", data)
+        console.log(data)
+    })
 })
 
 app.set("view engine", "ejs")
